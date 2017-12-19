@@ -156,6 +156,14 @@
     opacity:0;
   }
 
+  .trigger-enter .dropdown {
+      display: block;
+      
+  }
+
+  .trigger-enter-active .dropdown {
+      opacity: 1;
+  }
   .dropdownBackground.open {
     opacity: 1;
   }
@@ -220,11 +228,17 @@
 
 
     function handleEnter() { 
-        console.log('enter');
+        this.classList.add('trigger-enter');
+        setTimeout(() => {
+            this.classList.add('trigger-enter-active');
+        }, 150);
     }
 
     function handleLeave() {
-        console.log('leave');
+        this.classList.remove('trigger-enter');
+        setTimeout(() => {
+            this.classList.remove('trigger-enter-active');
+        }, 150);
     }
 
     triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
